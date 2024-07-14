@@ -15,6 +15,24 @@
         let KEY_SPACE = false; // 32
         let KEY_UP = false; // 38
         let KEY_DOWN = false; // 40
+        let ctx;
+        let backgroundImage = new Image();
+
+        let rocket = {
+            x: 100;
+            y: 200;
+            width: 200;
+            height: 80;
+            src: 'grafik/rackete.png'
+        };
+
+        let ufo = {
+            x: 100;
+            y: 200;
+            width: 200;
+            height: 80;
+            src: 'grafik/ufo.png'
+        };
 
         document.onkeydown = function(e) {
             if (e.keyCode == 32) { 
@@ -43,14 +61,34 @@
                 KEY_DOWN = false;
             }
         }
+
+        function startGame() {
+            ctx = canvas.getContext('2d');
+            loadImages();
+            draw();
+        }
+
+        function loadImages(){
+            backgroundImage.src = 'grafik/hintergrund.png';
+            rocket.img = new Image();
+            rocket.img.src = rocket.src;
+
+            ufo.img = new Image();
+            ufo.img.src = ufo.src;
+        }
+
+        function draw(){
+
+            requestAnimationFrame(draw);
+        }
     </script>
 
 
 </head>
 
 
-<body>
-    <canvas width="1280" height="720"></canvas>
+<body onload="startGame()"></body>
+    <canvas id="canvas" width="1280" height="720"></canvas>
 
 </body>
 
